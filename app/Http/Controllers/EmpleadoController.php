@@ -20,14 +20,13 @@ class EmpleadoController extends Controller
         return view('Empleados.lista', compact('emplaeados'));
     }
 
-    /*public function delete($id){
-        Empleado::destroy($id);
+    public function editarEmpleado($id, Request $request){
+        $empleado = $this->getEmpleado($id);
+        $empleado->fill($request->all())->save();
         return response()->json([
-            'usuario' => $id,
-            'descripcion' => 'eliminado con exito',
-        ]);
-        return back() ->with('empleadoguardado', 'Empleado guardado con exito');
-    }*/
+            'Metodo' => 'Actualizar',
+            'descripcion' => ' Empleado actualizado exitosamente', $empleado]);
+    }
 
     public function eliminarEmpleado($id){
         $empleado= $this->getEmpleado($id) ;

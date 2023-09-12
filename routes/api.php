@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('get-empleados', [\App\Http\Controllers\EmpleadoController::class, 'getAll'])->name('api-getAll');
 Route::put('guardar-empleados', [\App\Http\Controllers\EmpleadoController::class, 'save'])->name('save');
 Route::delete('eliminar-empleados/{id}', [\App\Http\Controllers\EmpleadoController::class, 'eliminarEmpleado'])->name('delete');
+Route::post('editar-empleado/{id}', [\App\Http\Controllers\EmpleadoController::class, 'editarEmpleado'])->name('editarEmpleado');
