@@ -20,9 +20,26 @@ class EmpleadoController extends Controller
         return view('Empleados.lista', compact('emplaeados'));
     }
 
-    public function delete($id){
+    /*public function delete($id){
         Empleado::destroy($id);
+        return response()->json([
+            'usuario' => $id,
+            'descripcion' => 'eliminado con exito',
+        ]);
         return back() ->with('empleadoguardado', 'Empleado guardado con exito');
+    }*/
+
+    public function eliminarEmpleado($id){
+        $empleado= $this->getEmpleado($id) ;
+        $empleado-> delete();
+        return $empleado;
+    
+    }
+
+    public function getEmpleado($id){
+        $empleado = Empleado::find($id);
+        return $empleado;
+
     }
 
     public function crear(){
@@ -69,6 +86,11 @@ class EmpleadoController extends Controller
         }
         
         
+    }
+
+    public function delete($id){
+        Empleado::destroy($id);
+        return back() ->with('empleadoguardado', 'Empleado guardado con exito');
     }
 
     public function modificar ($id){
