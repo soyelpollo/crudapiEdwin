@@ -19,12 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('get-empleados', [\App\Http\Controllers\EmpleadoController::class, 'getAll'])->name('api-getAll')->middleware('auth:sanctum');
+Route::get('get-empleados', [\App\Http\Controllers\EmpleadoController::class, 'getAll'])->name('api-getAll');
 Route::put('guardar-empleados', [\App\Http\Controllers\EmpleadoController::class, 'save'])->name('save');
 Route::delete('eliminar-empleados/{id}', [\App\Http\Controllers\EmpleadoController::class, 'eliminarEmpleado'])->name('delete');
 Route::post('editar-empleado/{id}', [\App\Http\Controllers\EmpleadoController::class, 'editarEmpleado'])->name('editarEmpleado');
-Route::get('get-empleado/{id}', [\App\Http\Controllers\EmpleadoController::class, 'getEmpleado'])->name('getEmpleado');
-
-Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
-Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::get('userinfo', [\App\Http\Controllers\AuthController::class, 'userinfo'])->middleware('auth:sanctum');
